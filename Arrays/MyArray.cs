@@ -10,67 +10,68 @@ namespace Arrays
     {
         protected double NegativeSum = 0;
         protected double MinElement = int.MaxValue;
-        protected double MaxElementIndex = int.MinValue;
+        protected int MaxElementIndex;
+        protected double MaxElement = int.MinValue;
         protected double MaxAbsElement = int.MinValue;
         protected int PositiveElementsIndexSum = 0;
         protected int IntergersCount = 0;
-        protected double[] Array;
 
-        public MyArray(double[] array)
+        public void GetNegativeSum(double[] array)
         {
-            Array = array;
-        }
-
-        public void GetNegativeSum()
-        {
-            for (int i = 0; i < Array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if(Array[i] < 0) NegativeSum += Array[i];
+                if (array[i] < 0) NegativeSum += array[i];
             }
             Console.WriteLine($"Sum of negative number: {NegativeSum}");
         }
 
-        public void GetMinElement()
+        public void GetMinElement(double[] array)
         {
-            for (int i = 0; i < Array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (Array[i] < MinElement) MinElement = Array[i];
+                if (array[i] < MinElement) MinElement = array[i];
             }
             Console.WriteLine($"Minimum number: {MinElement}");
         }
 
-        public void GetMaxIndex()
+        public void GetMaxIndex(double[] array)
         {
-            for (int i = 0; i < Array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (Array[i] > MaxElementIndex) MaxElementIndex = i;
+                if (array[i] > MaxElement)
+                {
+                    MaxElement = array[i];
+                    MaxElementIndex = i;
+                }
             }
             Console.WriteLine($"Index of max element: {MaxElementIndex}");
         }
 
-        public void GetMaxAbsElement()
+        public void GetMaxAbsElement(double[] array)
         {
-            for (int i = 0; i < Array.Length; i++)
+            if (Math.Abs(MinElement) > MaxElement)
             {
-                if (Math.Abs(Array[i]) > MaxAbsElement) MaxAbsElement = Array[i];
+                Console.WriteLine($"Max absolute element: {MinElement}");
+            } else
+            {
+                Console.WriteLine($"Max absolute element: {MaxElement}");
             }
-            Console.WriteLine($"Max absolute element: {MaxAbsElement}");
         }
 
-        public void GetPositiveIndexSum()
+        public void GetPositiveIndexSum(double[] array)
         {
-            for (int i = 0; i < Array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (Math.Abs(Array[i]) > 0) PositiveElementsIndexSum += i;
+                if (array[i] > 0) PositiveElementsIndexSum += i;
             }
             Console.WriteLine($"Sum of positive number index: {PositiveElementsIndexSum}");
         }
 
-        public void GetAmountIntegers()
+        public void GetAmountIntegers(double[] array)
         {
-            for (int i = 0; i < Array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (Array[i] % 1.0 == 0.0) IntergersCount += 1;
+                if (array[i] % 1.0 == 0.0) IntergersCount += 1;
             }
             Console.WriteLine($"Amount of integers: {IntergersCount}");
         }
