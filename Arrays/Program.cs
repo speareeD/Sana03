@@ -7,10 +7,10 @@ namespace Sana03
         public static void Main(string[] args)
         {
             int n;
-            double[] array = new double[10];
-            Random rand = new Random();
             Console.Write("Enter amount of elements in array: ");
             n = int.Parse(Console.ReadLine());
+            double[] array = new double[n];
+            Random rand = new Random();
 
             for (int i = 0; i < n; i++)
             {
@@ -20,13 +20,13 @@ namespace Sana03
             Console.WriteLine();
             Console.WriteLine();
 
-            MyArray myArray = new MyArray();
-            myArray.GetNegativeSum(array);
-            myArray.GetMinElement(array);
-            myArray.GetMaxIndex(array);
-            myArray.GetMaxAbsElement(array);
-            myArray.GetPositiveIndexSum(array);
-            myArray.GetAmountIntegers(array);
+            MyArray myArray = new MyArray(array);
+            Console.WriteLine("Negative sum: " + myArray.GetNegativeSum());
+            Console.WriteLine("Minimal element: " + myArray.GetMinElement());
+            Console.WriteLine("Max element index: " + myArray.GetMaxIndex());
+            Console.WriteLine("Max absolute element: " + myArray.GetMaxAbsElement());
+            Console.WriteLine("Sum of positive numbers' indexes: " + myArray.GetPositiveIndexSum());
+            Console.WriteLine("Integers: " + myArray.GetAmountIntegers());
         }
     }
 }
