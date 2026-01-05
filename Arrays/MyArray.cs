@@ -23,7 +23,7 @@
             {
                 if (Array[i] < 0) NegativeSum += Array[i];
             }
-            return NegativeSum;
+            return Math.Round(NegativeSum, 2);
         }
 
         public double GetMinElement()
@@ -80,11 +80,12 @@
             return PositiveElementsIndexSum;
         }
 
-        public double GetAmountIntegers()
+        public int GetAmountIntegers()
         {
             for (int i = 0; i < Array.Length; i++)
             {
-                if (Array[i] == Math.Round(Array[i])) IntergersCount += 1;
+                if (Array[i] == Math.Floor(Array[i])) IntergersCount++;
+
             }
             return IntergersCount;
         }
