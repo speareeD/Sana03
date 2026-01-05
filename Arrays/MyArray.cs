@@ -1,4 +1,6 @@
-﻿namespace Arrays
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Arrays
 {
     internal class MyArray
     {
@@ -10,13 +12,13 @@
         protected int PositiveElementsIndexSum = 0;
         protected int IntergersCount = 0;
 
-        public void GetNegativeSum(double[] array)
+        public double GetNegativeSum(double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] < 0) NegativeSum += array[i];
             }
-            Console.WriteLine($"Sum of negative number: {NegativeSum}");
+            return NegativeSum;
         }
 
         public double GetMinElement(double[] array)
@@ -37,7 +39,7 @@
             return MaxElement;
         }
 
-        public void GetMaxIndex(double[] array)
+        public double GetMaxIndex(double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -47,37 +49,39 @@
                     MaxElementIndex = i;
                 }
             }
-            Console.WriteLine($"Index of max element: {MaxElementIndex}");
+            return MaxElementIndex;
         }
 
         public double GetMaxAbsElement(double[] array)
         {
             if (Math.Abs(GetMinElement(array)) > GetMaxElement(array))
             {
-                return GetMinElement(array);
+                MaxAbsElement = GetMinElement(array);
+                return MaxAbsElement;
             }
             else
             {
-                return GetMaxElement(array);
+                MaxAbsElement = GetMaxElement(array);
+                return MaxAbsElement;
             }
         }
 
-        public void GetPositiveIndexSum(double[] array)
+        public double GetPositiveIndexSum(double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] > 0) PositiveElementsIndexSum += i;
             }
-            Console.WriteLine($"Sum of positive number index: {PositiveElementsIndexSum}");
+            return PositiveElementsIndexSum;
         }
 
-        public void GetAmountIntegers(double[] array)
+        public double GetAmountIntegers(double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] % 1.0 == 0.0) IntergersCount += 1;
             }
-            Console.WriteLine($"Amount of integers: {IntergersCount}");
+            return IntergersCount;
         }
     }
 }
