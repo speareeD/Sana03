@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace Arrays
+﻿namespace Arrays
 {
     internal class MyArray
     {
@@ -11,75 +9,82 @@ namespace Arrays
         protected double MaxAbsElement = int.MinValue;
         protected int PositiveElementsIndexSum = 0;
         protected int IntergersCount = 0;
+        protected double[] Array;
 
-        public double GetNegativeSum(double[] array)
+        public MyArray(double[] array)
         {
-            for (int i = 0; i < array.Length; i++)
+            Array = new double[array.Length];
+            array.CopyTo(Array, 0);
+        }
+
+        public double GetNegativeSum()
+        {
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] < 0) NegativeSum += array[i];
+                if (Array[i] < 0) NegativeSum += Array[i];
             }
             return NegativeSum;
         }
 
-        public double GetMinElement(double[] array)
+        public double GetMinElement()
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] < MinElement) MinElement = array[i];
+                if (Array[i] < MinElement) MinElement = Array[i];
             }
             return MinElement;
         }
 
-        public double GetMaxElement(double[] array)
+        public double GetMaxElement()
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] > MaxElement) MaxElement = array[i];
+                if (Array[i] > MaxElement) MaxElement = Array[i];
             }
             return MaxElement;
         }
 
-        public double GetMaxIndex(double[] array)
+        public double GetMaxIndex()
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] > MaxElement)
+                if (Array[i] > MaxElement)
                 {
-                    MaxElement = array[i];
+                    MaxElement = Array[i];
                     MaxElementIndex = i;
                 }
             }
             return MaxElementIndex;
         }
 
-        public double GetMaxAbsElement(double[] array)
+        public double GetMaxAbsElement()
         {
-            if (Math.Abs(GetMinElement(array)) > GetMaxElement(array))
+            if (Math.Abs(GetMinElement()) > GetMaxElement())
             {
-                MaxAbsElement = GetMinElement(array);
+                MaxAbsElement = GetMinElement();
                 return MaxAbsElement;
             }
             else
             {
-                MaxAbsElement = GetMaxElement(array);
+                MaxAbsElement = GetMaxElement();
                 return MaxAbsElement;
             }
         }
 
-        public double GetPositiveIndexSum(double[] array)
+        public double GetPositiveIndexSum()
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] > 0) PositiveElementsIndexSum += i;
+                if (Array[i] > 0) PositiveElementsIndexSum += i;
             }
             return PositiveElementsIndexSum;
         }
 
-        public double GetAmountIntegers(double[] array)
+        public double GetAmountIntegers()
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < Array.Length; i++)
             {
-                if (array[i] % 1.0 == 0.0) IntergersCount += 1;
+                if (Array[i] == Math.Round(Array[i])) IntergersCount += 1;
             }
             return IntergersCount;
         }
