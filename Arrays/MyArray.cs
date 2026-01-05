@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Arrays
+﻿namespace Arrays
 {
     internal class MyArray
     {
@@ -25,13 +19,22 @@ namespace Arrays
             Console.WriteLine($"Sum of negative number: {NegativeSum}");
         }
 
-        public void GetMinElement(double[] array)
+        public double GetMinElement(double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] < MinElement) MinElement = array[i];
             }
-            Console.WriteLine($"Minimum number: {MinElement}");
+            return MinElement;
+        }
+
+        public double GetMaxElement(double[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > MaxElement) MaxElement = array[i];
+            }
+            return MaxElement;
         }
 
         public void GetMaxIndex(double[] array)
@@ -47,14 +50,15 @@ namespace Arrays
             Console.WriteLine($"Index of max element: {MaxElementIndex}");
         }
 
-        public void GetMaxAbsElement(double[] array)
+        public double GetMaxAbsElement(double[] array)
         {
-            if (Math.Abs(MinElement) > MaxElement)
+            if (Math.Abs(GetMinElement(array)) > GetMaxElement(array))
             {
-                Console.WriteLine($"Max absolute element: {MinElement}");
-            } else
+                return GetMinElement(array);
+            }
+            else
             {
-                Console.WriteLine($"Max absolute element: {MaxElement}");
+                return GetMaxElement(array);
             }
         }
 
