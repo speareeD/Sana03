@@ -13,8 +13,7 @@
 
         public MyArray(double[] array)
         {
-            Array = new double[array.Length];
-            array.CopyTo(Array, 0);
+            Array = array;
         }
 
         public double GetNegativeSum()
